@@ -76,8 +76,8 @@ while True:
         print(target + "not in the dictionary")
         continue
      break
-choice1 = input('Are there any words you dont want in the path?')
-if choice1 == 'Yes' or choice1 == 'yes':
+choice1 = input('Are there any words you dont want in the path? Please enter yes or no.')
+if choice1 == 'yes':
     print("Please type one word in one line and type 0 in the end:")
     delete = input()
     while delete != 0:
@@ -86,16 +86,13 @@ if choice1 == 'Yes' or choice1 == 'yes':
         break
 path = [start]
 seen = {start : True} # have already seen this word
-choice2 = input("Do you want the shorest way?")
-if choice2 == 'Yes' or choice2 == 'yes':
-    if sfind(start, words, seen, target, path):
-      path.append(target)
-      print(len(path) - 1, path)
-    else:
-      print("No path found")
+choice2 = input("Do you want the shorest way? Please enter yes or no.")
+if choice2 == 'yes':
+    final = sfind(start, words, seen, target, path)
 else:
-    if sfind(start, words, seen, target, path):
-          path.append(target)
-          print(len(path) - 1, path)
-    else:
-          print("No path found")
+    final = find(start, words, seen, target, path)
+if final:
+    path.append(target)
+    print(len(path) - 1, path)
+else:
+    print("No path found")
